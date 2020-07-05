@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mastering_level_4/models/Note.dart';
 import 'package:flutter_mastering_level_4/src/another.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,6 +17,10 @@ class _HomeScreenState extends State<HomeScreen> {
     
     setDate();
   
+    Note().db.then((value){
+      print('sqflite database created succcessfully');
+    });
+
   }
 
   @override
