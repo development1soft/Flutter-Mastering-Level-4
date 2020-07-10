@@ -17,10 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
     
     setDate();
   
-    Note().db.then((value){
-      print('sqflite database created succcessfully');
-    });
-
   }
 
   @override

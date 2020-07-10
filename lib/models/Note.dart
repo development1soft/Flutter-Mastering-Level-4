@@ -36,5 +36,42 @@ class Note {
     print('Notes Table Created');
   }
 
+  Future<int> create(Map<String,dynamic> data) async{
+
+    var db_client = await db;
+
+    var insert = db_client.insert('notes', data);
+
+    return insert;
+
+  }
+
+  Future<List> getData() async{
+    
+    var db_client = await db;
+
+    var notes = await db_client.query('notes');
+    
+    return notes; 
+    
+  }
+
+  Future<int> deleteNote(int id) async{
+
+    var db_client = await db;
+
+    var deleted_note = await db_client.rawUpdate('DELETE FROM notes WHERE id="$id"');
+
+    return deleted_note;
+  }
+
+  Future<int> updateNote(String note,int id) async{
+
+    var db_client = await db;
+
+    var updated_note = await db_client.rawUpdate('UPDATE notes SET note="$note" WHERE id="$id" ');
+
+    return updated_note;
+  }
 
 }
