@@ -53,6 +53,15 @@ class _SqlPraticeScreenState extends State<SqlPraticeScreen> {
                 });
               },
             ),
+            FlatButton(
+              child: Text('GET SINGLE ROW',style:TextStyle(color: Colors.white,fontSize: 30)),
+              color: Colors.pink,
+              onPressed: (){
+                Note().getSingleRow(4).then((value){
+                  print('the value is : ' + value.toString());
+                });
+              },
+            ),
           ],
         ),
       ),

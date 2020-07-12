@@ -50,7 +50,7 @@ class Note {
     
     var db_client = await db;
 
-    var notes = await db_client.query('notes');
+    var notes = await db_client.query('notes',orderBy: 'id DESC',limit: 2);
     
     return notes; 
     
@@ -72,6 +72,17 @@ class Note {
     var updated_note = await db_client.rawUpdate('UPDATE notes SET note="$note" WHERE id="$id" ');
 
     return updated_note;
+  }
+
+
+  Future<List> getSingleRow(int id) async{
+    
+    var db_client = await db;
+
+    var note = await db_client.query('notes',where: 'id = "$id"');
+    
+    return note; 
+    
   }
 
 }
